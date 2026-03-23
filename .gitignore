@@ -1,0 +1,25 @@
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.ipynb_checkpoints
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Data and Models
+data/processed/
+*.pkl
+*.csv
+*.xlsx
+db_30_2_excel/
+
+# OS
+.DS_Store
