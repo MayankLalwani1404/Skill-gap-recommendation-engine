@@ -298,14 +298,15 @@ def chips_html(items, cls="chip-gray", max_show=20):
 def match_bar_html(pct, label="Match"):
     color = pct_color(pct)
     return f"""
-    <div style="margin: 0.3rem 0;">
-      <div style="display:flex; justify-content:space-between; font-size:0.78rem; color:rgba(255,255,255,0.6); margin-bottom:3px;">
-        <span>{label}</span><span style="color:{color}; font-weight:700;">{pct:.1f}%</span>
-      </div>
-      <div class="match-bar-bg">
-        <div class="match-bar-fill" style="width:{min(pct,100):.1f}%; background: linear-gradient(90deg, {color}, {color}88);"></div>
-      </div>
-    </div>"""
+<div style="margin: 0.3rem 0;">
+  <div style="display:flex; justify-content:space-between; font-size:0.78rem; color:rgba(255,255,255,0.6); margin-bottom:3px;">
+    <span>{label}</span><span style="color:{color}; font-weight:700;">{pct:.1f}%</span>
+  </div>
+  <div class="match-bar-bg">
+    <div class="match-bar-fill" style="width:{min(pct,100):.1f}%; background: linear-gradient(90deg, {color}, {color}88);"></div>
+  </div>
+</div>
+"""
 
 
 def role_card_html(rank, row, user_skills_set):
@@ -775,17 +776,17 @@ def tab_roadmap(recs, user_skills, rec):
         }.get(step["tier"], "tier-2")
 
         st.markdown(f"""
-        <div class="roadmap-step {tier_class}">
-            <div style="display:flex;align-items:center;gap:0.5rem;">
-                <span style="font-size:1.1rem;font-weight:700;color:rgba(255,255,255,0.9);">
-                    {step['priority']}. {step['skill']}
-                </span>
-                <span class="chip chip-gray" style="font-size:0.72rem;">{step['category']}</span>
-            </div>
-            <div style="font-size:0.78rem;color:rgba(255,255,255,0.45);margin-top:2px;">
-                {step['tier']} &nbsp;·&nbsp; Importance: {step['importance']:.2f}/5
-            </div>
-        </div>
+<div class="roadmap-step {tier_class}">
+    <div style="display:flex;align-items:center;gap:0.5rem;">
+        <span style="font-size:1.1rem;font-weight:700;color:rgba(255,255,255,0.9);">
+            {step['priority']}. {step['skill']}
+        </span>
+        <span class="chip chip-gray" style="font-size:0.72rem;">{step['category']}</span>
+    </div>
+    <div style="font-size:0.78rem;color:rgba(255,255,255,0.45);margin-top:2px;">
+        {step['tier']} &nbsp;·&nbsp; Importance: {step['importance']:.2f}/5
+    </div>
+</div>
         """, unsafe_allow_html=True)
 
     # Related roles suggestion
@@ -824,15 +825,15 @@ def tab_explore(rec):
                 cluster_roles = role_df[role_df["cluster"] == cid].sort_values("skill_count", ascending=False)
                 sample_titles = cluster_roles["title_clean"].head(5).tolist()
                 st.markdown(f"""
-                <div class="card" style="min-height:120px;">
-                    <div style="font-weight:700;color:#a89fff;margin-bottom:0.3rem;">
-                        Career Cluster {cid + 1}
-                    </div>
-                    <div style="font-size:0.8rem;color:rgba(255,255,255,0.6);">
-                        {len(cluster_roles)} roles
-                    </div>
-                    {chips_html(sample_titles[:4], 'chip-gray')}
-                </div>
+<div class="card" style="min-height:120px;">
+    <div style="font-weight:700;color:#a89fff;margin-bottom:0.3rem;">
+        Career Cluster {cid + 1}
+    </div>
+    <div style="font-size:0.8rem;color:rgba(255,255,255,0.6);">
+        {len(cluster_roles)} roles
+    </div>
+    {chips_html(sample_titles[:4], 'chip-gray')}
+</div>
                 """, unsafe_allow_html=True)
 
     with subtab3:
