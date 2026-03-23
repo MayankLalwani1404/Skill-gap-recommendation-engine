@@ -15,9 +15,6 @@ ENV/
 .streamlit/secrets.toml
 
 # Data and Models
-data/processed/
-*.pkl
-*.csv
 *.xlsx
 db_30_2_excel/
 
